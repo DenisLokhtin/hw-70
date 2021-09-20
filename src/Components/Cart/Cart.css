@@ -1,0 +1,8 @@
+.cart {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 3px;
+    height: 50vh;
+    width: 25vw;
+    margin-left: 20px;
+}

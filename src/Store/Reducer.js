@@ -1,8 +1,8 @@
-import {addProduct, setMessage, setPost, setState} from "./Action";
+import {addProduct, setState} from "./Action";
 
 const initialState = {
     products: [],
-    cart: [],
+    cart: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,17 +10,29 @@ const reducer = (state = initialState, action) => {
         case setState:
             return {...state, products: action.payload};
         case addProduct:
+            if (!state.cart.hasOwnProperty(action.name)) {
+                console.log('create')
+                return {
+                    ...state, cart: {
+                        ...state.cart,
+                        [action.name]: {
+                            price: action.price,
+                            count: 1,
+                        },
+                    }
+                }
+            }
+            console.log(state.cart[action.name].count)
+            let count = state.cart[action.name].count + 1
             return {
                 ...state, cart: {
-                    name: action.name,
-                    price: action.price,
-                    count: 1,
+                    ...state.cart,
+                    [action.name]: {
+                        price: action.price,
+                        count: count,
+                    },
                 }
-            };
-        case setPost:
-            return {...state, posts: action.payload}
-        case setMessage:
-            return {...state, message: action.payload};
+            }
         default:
             return state;
     }

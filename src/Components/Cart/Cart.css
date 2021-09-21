@@ -5,4 +5,23 @@
     height: 50vh;
     width: 25vw;
     margin-left: 20px;
+    padding: 30px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.cart span {
+    float: right;
+}
+
+.order {
+    border-bottom: 2px solid black;
+}
+
+.order-btn {
+    text-align: center;
+}
+
+.order-btn button {
+    font-size: 22px;
 }

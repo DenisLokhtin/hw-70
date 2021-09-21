@@ -1,4 +1,5 @@
 export const setPost = 'SET POSTS';
+export const addProduct = 'ADD PRODUCT';
 export const setShow = 'SET SHOW';
-export const setTitle = 'SET TITLE';
+export const setState = 'SET STATE';
 export const setMessage = 'SET MESSAGE';

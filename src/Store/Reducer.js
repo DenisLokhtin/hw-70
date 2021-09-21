@@ -1,18 +1,22 @@
-import {setMessage, setPost, setShow, setTitle} from "./Action";
+import {addProduct, setMessage, setPost, setState} from "./Action";
 
 const initialState = {
-    title: '',
-    message: '',
-    posts: [],
-    showPost: false,
+    products: [],
+    cart: [],
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case setTitle:
-            return {...state, title: action.payload};
-        case setShow:
-            return {...state, showPost: action.payload};
+        case setState:
+            return {...state, products: action.payload};
+        case addProduct:
+            return {
+                ...state, cart: {
+                    name: action.name,
+                    price: action.price,
+                    count: 1,
+                }
+            };
         case setPost:
             return {...state, posts: action.payload}
         case setMessage:

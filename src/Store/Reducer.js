@@ -11,7 +11,6 @@ const reducer = (state = initialState, action) => {
             return {...state, products: action.payload};
         case addProduct:
             if (!state.cart.hasOwnProperty(action.name)) {
-                console.log('create')
                 return {
                     ...state, cart: {
                         ...state.cart,
@@ -22,7 +21,6 @@ const reducer = (state = initialState, action) => {
                     }
                 }
             }
-            console.log(state.cart[action.name].count)
             let count = state.cart[action.name].count + 1
             return {
                 ...state, cart: {

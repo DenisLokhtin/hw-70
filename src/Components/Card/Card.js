@@ -9,7 +9,6 @@ const Card = (props) => {
 
     return (
         <div key={props.index} className="card">
-            {console.log('in card')}
             <img className="img" src={props.img} alt=""/>
             <div className="info">
                 <p>{props.name}</p>

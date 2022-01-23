@@ -1,11 +1,10 @@
 import React from 'react';
 import './Card.css';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {addProduct} from "../../Store/actions/cartAction";
 
 const Card = (props) => {
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart);
-    const addProduct = (name, price) => dispatch({type: 'ADD PRODUCT', name: name, price: price});
 
     return (
         <div key={props.index} className="card">
@@ -15,7 +14,7 @@ const Card = (props) => {
                 <p>{props.price} сом</p>
             </div>
             <div>
-                <button onClick={() => addProduct(props.name, props.price)} className="btn">Add to cart</button>
+                <button onClick={() => dispatch(addProduct(props.name, props.price))} className="btn">Add to cart</button>
             </div>
         </div>
     )

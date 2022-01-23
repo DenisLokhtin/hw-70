@@ -1,30 +1,16 @@
 import React, {useEffect} from 'react';
 import Card from "../Card/Card";
-import axiosApi from "../../AxiosAPI";
 import {useDispatch, useSelector} from "react-redux";
 import './Menu.css'
+import {getOrders} from "../../Store/actions/productsAction";
 
 const Menu = (props) => {
     const dispatch = useDispatch();
-    const state = useSelector(state => state.products);
-    const setState = (value) => dispatch({type: 'SET STATE', payload: value});
-
+    const state = useSelector(state => state.products.products);
 
     useEffect(() => {
-        const getOrders = async () => {
-            try {
-                await axiosApi.get('/Products.json').then(response => {
-                    if (response.data !== null) {
-                        const arrayPosts = Object.values(response.data);
-                        setState([...arrayPosts]);
-                    }
-                });
-            } catch (e) {
-                alert(e)
-            }
-        };
-        getOrders()
-    }, []);
+        dispatch(getOrders());
+    }, [dispatch]);
 
     return (
         <div className="menu">
